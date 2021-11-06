@@ -1,4 +1,3 @@
-from logging import log
 import discord
 from discord_components import ComponentsBot
 import bot_config
@@ -56,6 +55,8 @@ async def on_button_click(interaction):
         await logic.request_pcw(interaction)
     elif interaction.component.id == "button_ringer_avi":
         await logic.ringer_avi(interaction)
+    elif interaction.component.id == "button_remove_from_queue":
+        await logic.remove_from_queue(interaction)
 
 
 bot.run(config.token)

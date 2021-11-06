@@ -47,7 +47,8 @@ class Embed:
 
         pcw_request_str = ""
         for player_group in self.logic.pcw_request_list:
-            pcw_request_str += f"{player_group.number}v{player_group.number} Requested by {player_group.leader} \n"
+            pcw_request_str += f"{player_group.number}v{player_group.number} \
+                Requested by {player_group.leader.discord_name} \n"
         if pcw_request_str == "":
             pcw_request_str = "No pcw requested"
 
@@ -76,11 +77,19 @@ class ButtonComponent:
                 style=ButtonStyle.blue,
                 label="Ring avi",
                 custom_id=f"button_ringer_avi"
+                ),
+            Button(
+                style=ButtonStyle.red,
+                label="Remove",
+                custom_id=f"button_remove_from_queue"
                 )
             ]]
 
 
 class Message:
     def __init__(self):
-        self.request_pcw = "PCW requested!"
-        self.ringer_avi = "You are available to ring!"
+        self.request_pcw = "PCW requested by ``{playername}``."
+        self.ringer_avi = "``{playername}`` is available to ring."
+        self.error_inqueue = "Error: you are already in queue."
+        self.error_notinqueue = "Error: you are not in queue."
+        self.remove_from_queue = "``{playername}`` was removed from the queue."
